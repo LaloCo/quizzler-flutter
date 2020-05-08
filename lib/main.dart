@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quiz_logic.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizLogic quizLogic = QuizLogic();
 
@@ -44,7 +45,28 @@ class _QuizPageState extends State<QuizPage> {
         ));
       }
 
-      quizLogic.nextQuestion();
+      if (quizLogic.isFinished()) {
+        quizLogic.reset();
+        scores.clear();
+        Alert(
+            context: context,
+            title: 'GAME OVER',
+            desc: 'Those are all the questions, thanks for playing.',
+            buttons: [
+              DialogButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text(
+                  'Ok',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                  ),
+                ),
+              )
+            ]).show();
+      } else {
+        quizLogic.nextQuestion();
+      }
     });
   }
 
