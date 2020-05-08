@@ -32,11 +32,15 @@ class QuizLogic {
   ];
 
   void nextQuestion() {
-    if (_questionNumber < _questions.length - 1)
-      _questionNumber++;
-    else {
-      //TODO: game over
-    }
+    if (_questionNumber < _questions.length - 1) _questionNumber++;
+  }
+
+  bool isFinished() {
+    return _questionNumber >= _questions.length - 1;
+  }
+
+  void reset() {
+    _questionNumber = 0;
   }
 
   String getQuestionText() {
