@@ -1,6 +1,7 @@
 import 'question.dart';
 
 class QuizLogic {
+  // In dart, adding the '_' before the name of the variable makes it private
   int _questionNumber = 0;
 
   List<Question> _questions = [
